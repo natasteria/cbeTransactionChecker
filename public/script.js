@@ -3,7 +3,6 @@ document.getElementById('transactionForm').addEventListener('submit', function(e
     const fileInput = document.getElementById('transactionFile');
     const file = fileInput.files[0];
     if (file) {
-        
         const formData = new FormData();
         formData.append('transactionFile', file);
 
@@ -17,8 +16,10 @@ document.getElementById('transactionForm').addEventListener('submit', function(e
             return response.json();
         })
         .then(data => {
-            alert('File uploaded successfully!');
-            console.log('Server response:', data);
+            // Display the results in the result container
+            document.querySelector('.result-container').style.display = 'block';
+            document.getElementById('receiverName').textContent = data.receiver || '';
+            document.getElementById('amount').textContent = data.amount || '';
         })
         .catch(error => {
             alert('Error uploading file: ' + error.message);
