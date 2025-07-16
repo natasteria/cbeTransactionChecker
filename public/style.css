@@ -54,3 +54,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background: #1761c7;
 }
+
+.result-container {
+    display: none;
+}
