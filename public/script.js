@@ -6,7 +6,9 @@ document.getElementById('transactionForm').addEventListener('submit', function(e
         const formData = new FormData();
         formData.append('transactionFile', file);
 
-        fetch('http://localhost:8080/upload', {
+        // Use relative path for Netlify deployment, fallback to localhost for development
+        const apiUrl = window.location.hostname === 'localhost' ? 'http://localhost:8080/upload' : '/api/upload';
+        fetch(apiUrl, {
             mode: 'cors',
             method: 'POST',
             body: formData
