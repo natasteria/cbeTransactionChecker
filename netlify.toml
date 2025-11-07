@@ -1,0 +1,23 @@
+[build]
+  # Publish directory for static files
+  publish = "public"
+  # Build command (if you need to build anything)
+  command = "npm install"
+
+# Redirect rules
+[[redirects]]
+  # Redirect API upload endpoint to the serverless function
+  from = "/api/upload"
+  to = "/.netlify/functions/server"
+  status = 200
+  force = true
+
+# Environment variables (if needed)
+[build.environment]
+  NODE_VERSION = "18"
+
+# Function configuration
+[functions]
+  # Directory where serverless functions are located
+  directory = "netlify/functions"
+
